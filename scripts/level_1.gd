@@ -1,4 +1,3 @@
-
 extends Node2D
 
 var glitch_mode: bool = false
@@ -15,6 +14,8 @@ var transitioning: bool = false
 @onready var coach1_glitch: Sprite2D = $Coach1Glitch
 @onready var player: CharacterBody2D = $Player
 
+@onready var shift_prompt: TextureRect = $TutorialUI/ShiftPrompt
+
 var glitch_overlay: ColorRect
 
 
@@ -30,6 +31,8 @@ func _ready() -> void:
 
 	seat_barrier.visible = false
 	set_seat_collisions_disabled(true)
+
+	shift_prompt.visible = true
 
 	create_glitch_overlay()
 
@@ -71,18 +74,20 @@ func _process(_delta: float) -> void:
 			await transition_to_coach1()
 			return
 
-	# Enter switches dimensions.
+	# SPACE switches dimensions.
 	if Input.is_action_just_pressed("ui_accept"):
 		glitch_mode = not glitch_mode
 
 		if coach1_active:
 			coach1.visible = not glitch_mode
 			coach1_glitch.visible = glitch_mode
+
 			coach1_seat_barrier.visible = not glitch_mode
 			set_coach1_collisions_disabled(glitch_mode)
 		else:
 			background.visible = not glitch_mode
 			glitch_background.visible = glitch_mode
+
 			seat_barrier.visible = not glitch_mode
 			set_seat_collisions_disabled(glitch_mode)
 
@@ -117,7 +122,9 @@ func transition_to_coach2() -> void:
 	seat_barrier.visible = true
 	set_seat_collisions_disabled(false)
 
-	# Spawn at Coach 2's entrance.
+	# Hide the tutorial image in Coach 2.
+	shift_prompt.visible = false
+
 	player.global_position = Vector2(325.624, 417.577)
 	player.velocity = Vector2.ZERO
 
@@ -163,7 +170,10 @@ func transition_to_coach1() -> void:
 	coach1_seat_barrier.visible = true
 	set_coach1_collisions_disabled(false)
 
-	# Spawn away from Coach 1's doorway trigger.
+	# Show the tutorial image again in Coach 1.
+	shift_prompt.visible = true
+
+	# Spawn away from the doorway trigger.
 	player.global_position = Vector2(-550.0, 400.0)
 	player.velocity = Vector2.ZERO
 

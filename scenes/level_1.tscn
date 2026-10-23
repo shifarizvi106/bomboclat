@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cfdm0ebedbcwg" path="res://assets/Characters/walk_left.png" id="8_2os1m"]
 [ext_resource type="Texture2D" uid="uid://d0km7aj815tj4" path="res://assets/Characters/walk_right.png" id="9_go7sj"]
 [ext_resource type="Texture2D" uid="uid://c2ruvya66rvd3" path="res://assets/Characters/walk_up.png" id="10_7gny6"]
+[ext_resource type="Texture2D" uid="uid://ctmukmwaopj2l" path="res://assets/tutorialtext/press_space_text_only.png" id="11_2os1m"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2aecg"]
 load_path = "res://.godot/imported/Alex_idle_16x16.png-6d06c158a9e3c323c71cc407087019f2.ctex"
@@ -206,3 +207,14 @@ shape = SubResource("RectangleShape2D_fcfvj")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="BoundaryBarrier" unique_id=997729934]
 position = Vector2(1061, 331)
 shape = SubResource("RectangleShape2D_fcfvj")
+
+[node name="TutorialUI" type="CanvasLayer" parent="." unique_id=1625446883]
+
+[node name="ShiftPrompt" type="TextureRect" parent="TutorialUI" unique_id=836490093]
+offset_left = 301.0
+offset_top = 242.0
+offset_right = 866.0
+offset_bottom = 607.0
+texture = ExtResource("11_2os1m")
+expand_mode = 1
+stretch_mode = 5
