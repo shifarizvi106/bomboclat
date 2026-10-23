@@ -1,9 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy2nlbjrkhims"]
+[gd_scene load_steps=5 format=3 uid="uid://dy2nlbjrkhims"]
 
-[ext_resource type="Texture2D" uid="uid://kc0jihqb5uxg" path="res://assets/TrainExample/backgrounds/train_station.png" id="1_cuuuj"]
+[ext_resource type="Texture2D" uid="uid://dcoqbl855rbos" path="res://assets/TrainExample/backgrounds/train_station.png" id="1_cuuuj"]
+[ext_resource type="PackedScene" uid="uid://cclak0x13uoqr" path="res://Orc.tscn" id="2_eywua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eywua"]
+size = Vector2(35.04165, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuuuj"]
+size = Vector2(6.5764112, 70.75)
 
 [node name="TrainStation" type="Sprite2D"]
 texture_filter = 1
-position = Vector2(574.99994, 325.00003)
+position = Vector2(596, 365.00003)
 scale = Vector2(4.9655175, 4.4444447)
 texture = ExtResource("1_cuuuj")
+
+[node name="Node2D" parent="." instance=ExtResource("2_eywua")]
+position = Vector2(-96.46527, -4.725007)
+
+[node name="Barricade" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barricade"]
+position = Vector2(-99.28469, 20.47499)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_eywua")
+
+[node name="Bar-2" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bar-2"]
+position = Vector2(-113.51733, -25.825008)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_cuuuj")
+one_way_collision_margin = 0.0
