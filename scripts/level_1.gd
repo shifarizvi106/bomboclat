@@ -3,23 +3,28 @@ extends Node2D
 
 var glitch_mode := false
 var rgb_effect_active := false
+var coach1_active := true
+var transitioning := false
 
 @onready var seat_barrier = $SeatBarrier
-@onready var background = $Background
-@onready var glitch_background = $GlitchBackground
+@onready var background: Sprite2D = $Background
+@onready var glitch_background: Sprite2D = $GlitchBackground
+@onready var coach1: Sprite2D = $Coach1
+@onready var player: CharacterBody2D = $Player
 
 var glitch_overlay: ColorRect
 
 
 func _ready() -> void:
-	background.visible = true
+	coach1.visible = true
+	background.visible = false
 	glitch_background.visible = false
 	create_glitch_overlay()
 
 
 func create_glitch_overlay() -> void:
 	var canvas := CanvasLayer.new()
-	canvas.layer = 10
+	canvas.layer = 100
 	add_child(canvas)
 
 	glitch_overlay = ColorRect.new()
@@ -28,25 +33,91 @@ func create_glitch_overlay() -> void:
 		Control.PRESET_FULL_RECT
 	)
 	glitch_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	glitch_overlay.color = Color(0.1, 0.9, 1.0, 0.0)
+	glitch_overlay.color = Color(0, 0, 0, 0)
 	canvas.add_child(glitch_overlay)
 
 
 func _process(_delta: float) -> void:
+	if transitioning:
+		return
+
+	# Coach 1: detect Alex near the left-side door.
+	if coach1_active:
+		if (
+			player.global_position.x <= 120.0
+			and player.global_position.y >= 180.0
+			and player.global_position.y <= 260.0
+		):
+			await transition_to_coach2()
+
+		return
+
+	# Coach 2: dimension-shift mechanic.
 	if Input.is_action_just_pressed("ui_accept"):
 		glitch_mode = not glitch_mode
 
-		# Switch backgrounds.
 		background.visible = not glitch_mode
 		glitch_background.visible = glitch_mode
 
-		# Toggle seat collisions.
 		seat_barrier.visible = not glitch_mode
 		set_seat_collisions_disabled(glitch_mode)
 
-		# Play both effects.
 		play_glitch_effect()
 		play_rgb_split()
+
+
+func transition_to_coach2() -> void:
+	if transitioning:
+		return
+
+	transitioning = true
+
+	# Fade to black.
+	var fade_out := create_tween()
+	fade_out.tween_property(
+		glitch_overlay,
+		"color",
+		Color.BLACK,
+		0.35
+	)
+	await fade_out.finished
+
+	# Switch to Coach 2.
+	coach1.visible = false
+	background.visible = true
+	glitch_background.visible = false
+
+	glitch_mode = false
+	seat_barrier.visible = true
+	set_seat_collisions_disabled(false)
+
+	# Position Alex near Coach 2's left entrance.
+	var left_edge := background.global_position.x - (
+		background.texture.get_width()
+		* background.global_scale.x / 2.0
+	)
+
+	player.global_position = Vector2(
+		left_edge + 65.0,
+		background.global_position.y
+	)
+	player.velocity = Vector2.ZERO
+
+	# Keep the screen black for one second.
+	await get_tree().create_timer(1.0).timeout
+
+	# Fade back in.
+	var fade_in := create_tween()
+	fade_in.tween_property(
+		glitch_overlay,
+		"color",
+		Color(0, 0, 0, 0),
+		0.35
+	)
+	await fade_in.finished
+
+	coach1_active = false
+	transitioning = false
 
 
 func play_glitch_effect() -> void:
