@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=5 format=3 uid="uid://dy2nlbjrkhims"]
-=======
-[gd_scene format=3 uid="uid://dy2nlbjrkhims"]
->>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://dcoqbl855rbos" path="res://assets/TrainExample/backgrounds/train_station.png" id="1_cuuuj"]
 [ext_resource type="PackedScene" uid="uid://cclak0x13uoqr" path="res://Orc.tscn" id="2_eywua"]
