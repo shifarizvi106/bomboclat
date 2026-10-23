@@ -2,13 +2,58 @@
 
 [ext_resource type="Script" uid="uid://dx8lf3ehy8wse" path="res://scripts/level_1.gd" id="1_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://b272l8cj8g5vv" path="res://assets/TrainExample/backgrounds/train_interior_bullet.png" id="1_014kd"]
-[ext_resource type="Texture2D" uid="uid://m83iuirujr21" path="res://assets/Characters/Alex_idle_16x16.png" id="2_bswci"]
-[ext_resource type="Texture2D" uid="uid://b37at85k8t8sa" path="res://assets/TrainAssets/train_coach1_interior.png" id="2_fcfvj"]
+[ext_resource type="Texture2D" uid="uid://biymatipfybft" path="res://assets/TrainAssets/train_coach1_interior.png" id="2_fcfvj"]
 [ext_resource type="Script" uid="uid://c7dret4qbv10m" path="res://scripts/player.gd" id="2_rus8k"]
 [ext_resource type="Texture2D" uid="uid://cw2b850d2rywq" path="res://assets/TrainAssets/train_interior_bullet_glitch.png" id="3_4nkto"]
+[ext_resource type="Texture2D" uid="uid://de3b46e4wx70i" path="res://assets/TrainAssets/train_coach1_interior_glitched.png" id="3_pa8r4"]
+[ext_resource type="Texture2D" uid="uid://dfbcobhc86vyv" path="res://assets/Characters/idle_down.png" id="7_2y5yt"]
+[ext_resource type="Texture2D" uid="uid://cfdm0ebedbcwg" path="res://assets/Characters/walk_left.png" id="8_2os1m"]
+[ext_resource type="Texture2D" uid="uid://d0km7aj815tj4" path="res://assets/Characters/walk_right.png" id="9_go7sj"]
+[ext_resource type="Texture2D" uid="uid://c2ruvya66rvd3" path="res://assets/Characters/walk_up.png" id="10_7gny6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2aecg"]
+load_path = "res://.godot/imported/Alex_idle_16x16.png-6d06c158a9e3c323c71cc407087019f2.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hkftf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2y5yt")
+}],
+"loop": 1,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2os1m")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_go7sj")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_7gny6")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xughg"]
 size = Vector2(12, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa8r4"]
+size = Vector2(573, 132.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2b3bl"]
 size = Vector2(94, 173.5)
@@ -37,6 +82,13 @@ position = Vector2(576, 324)
 scale = Vector2(3, 3)
 texture = ExtResource("2_fcfvj")
 
+[node name="Coach1Glitch" type="Sprite2D" parent="." unique_id=353756285]
+visible = false
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(3, 3)
+texture = ExtResource("3_pa8r4")
+
 [node name="Background" type="Sprite2D" parent="." unique_id=713977338]
 visible = false
 texture_filter = 1
@@ -56,13 +108,28 @@ position = Vector2(300, 400)
 script = ExtResource("2_rus8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=499606415]
+visible = false
 texture_filter = 1
+position = Vector2(726, -70)
 scale = Vector2(3, 3)
-texture = ExtResource("2_bswci")
+texture = SubResource("CompressedTexture2D_2aecg")
 hframes = 4
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1555011382]
+position = Vector2(726, -70)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hkftf")
+animation = &"walk_left"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1812093507]
+position = Vector2(725, -63)
 shape = SubResource("RectangleShape2D_xughg")
+
+[node name="Coach1SeatBarrier" type="StaticBody2D" parent="." unique_id=1444892567]
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Coach1SeatBarrier" unique_id=473741079]
+position = Vector2(578.5, 331)
+shape = SubResource("RectangleShape2D_pa8r4")
 
 [node name="SeatBarrier" type="StaticBody2D" parent="." unique_id=1993450713]
 
@@ -91,7 +158,7 @@ position = Vector2(886, 238.25)
 shape = SubResource("RectangleShape2D_2b3bl")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="SeatBarrier" unique_id=854461450]
-position = Vector2(283, 431.125)
+position = Vector2(284, 429)
 shape = SubResource("RectangleShape2D_rus8k")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="SeatBarrier" unique_id=1395351623]

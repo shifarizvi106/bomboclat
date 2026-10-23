@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://274tg0vyvk3i"]
+[gd_scene load_steps=0 format=3 uid="uid://274tg0vyvk3i"]
 
 [ext_resource type="Script" uid="uid://c7pa1tum11q0b" path="res://assets/ui/levels.gd" id="1_vx2d3"]
 [ext_resource type="Texture2D" uid="uid://bglq23xluu8yq" path="res://assets/ui/working_man_title_bg_1280x720.png" id="2_n42ai"]

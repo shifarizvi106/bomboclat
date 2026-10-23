@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6vqrwquok1ag"
-path="res://.godot/imported/escalator_tiles.png-71be3cea8cfd5ea65dd263e9407228c6.ctex"
+uid="uid://bcp1i62tpk18a"
+path="res://.godot/imported/Soldier.png-b9f8ab453f5be05985d0709f68768c20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TrainExample/backgrounds/escalator_tiles.png"
-dest_files=["res://.godot/imported/escalator_tiles.png-71be3cea8cfd5ea65dd263e9407228c6.ctex"]
+source_file="res://assets/Characters/Soldier.png"
+dest_files=["res://.godot/imported/Soldier.png-b9f8ab453f5be05985d0709f68768c20.ctex"]
 
 [params]
 

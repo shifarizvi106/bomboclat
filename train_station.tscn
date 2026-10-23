@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy2nlbjrkhims"]
-
-[ext_resource type="Texture2D" uid="uid://kc0jihqb5uxg" path="res://assets/TrainExample/backgrounds/train_station.png" id="1_cuuuj"]
-
-[node name="TrainStation" type="Sprite2D"]
-texture_filter = 1
-position = Vector2(574.99994, 325.00003)
-scale = Vector2(4.9655175, 4.4444447)
-texture = ExtResource("1_cuuuj")
