@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://274tg0vyvk3i"]
+
+[ext_resource type="Script" uid="uid://c7pa1tum11q0b" path="res://assets/ui/levels.gd" id="1_vx2d3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7iky7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7iky7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vx2d3"]
+bg_color = Color(0.52906674, 0.52906674, 0.52906656, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n42ai"]
+bg_color = Color(0.76240367, 0.7624037, 0.7624035, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Levels" type="Control" unique_id=1948924458]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vx2d3")
+
+[node name="Panel" type="Panel" parent="." unique_id=1316395284]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7iky7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2028713856]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.125
+offset_top = -91.5
+offset_right = 98.125
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1801999838]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7iky7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx2d3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n42ai")
+text = "Level 1
+"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1752903287]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7iky7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx2d3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n42ai")
+text = "Level 2"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1838163264]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7iky7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx2d3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n42ai")
+text = "Level 3"
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=1920221468]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7iky7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vx2d3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n42ai")
+text = "Level 4"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_level1_pressed"]
