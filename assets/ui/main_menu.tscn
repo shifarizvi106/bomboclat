@@ -1,25 +1,27 @@
 [gd_scene format=3 uid="uid://byp8ejaoujl6g"]
 
 [ext_resource type="Script" uid="uid://sfyt7m7vi40g" path="res://assets/ui/main_menu.gd" id="1_mkuvw"]
+[ext_resource type="Texture2D" uid="uid://bglq23xluu8yq" path="res://assets/ui/working_man_title_bg_1280x720.png" id="2_hskgt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gyqk"]
+texture = ExtResource("2_hskgt")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gyqk"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pj7h2"]
-bg_color = Color(0.52906674, 0.52906674, 0.52906656, 1)
+bg_color = Color(2.2140146e-06, 0.58068115, 0.7593019, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uasto"]
-bg_color = Color(0.76240367, 0.7624037, 0.7624035, 1)
+bg_color = Color(0.4849313, 0.8021141, 0.99999994, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -50,15 +52,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -176.5
-offset_top = -122.0
-offset_right = 176.5
-offset_bottom = 122.0
+offset_left = -129.5
+offset_top = -67.0
+offset_right = 129.5
+offset_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1651971870]
+modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -73,6 +76,7 @@ text = "Start
 "
 
 [node name="Button4" type="Button" parent="VBoxContainer" unique_id=951879244]
+modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -86,6 +90,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_uasto")
 text = "															Levels"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=945878788]
+modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -99,6 +104,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_uasto")
 text = "Change Character"
 
 [node name="Button3" type="Button" parent="VBoxContainer" unique_id=2108891460]
+modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -111,24 +117,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pj7h2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uasto")
 text = "Exit
 "
-
-[node name="Label" type="Label" parent="." unique_id=2079060702]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -202.0
-offset_top = -253.0
-offset_right = 183.14929
-offset_bottom = -123.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "game name"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button4" to="." method="_on_levels_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cclak0x13uoqr"]
+[gd_scene format=3 uid="uid://cclak0x13uoqr"]
 
 [ext_resource type="Script" uid="uid://b13bt0i5sc35o" path="res://orc.gd" id="1_xr46d"]
 
