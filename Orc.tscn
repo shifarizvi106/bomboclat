@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cclak0x13uoqr"]
+
+[ext_resource type="Script" uid="uid://b13bt0i5sc35o" path="res://orc.gd" id="1_xr46d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xr46d"]
+radius = 184.0
+height = 406.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpg1s"]
+radius = 131.24405
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr46d"]
+size = Vector2(208, 196.25)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Orc" type="CharacterBody2D" parent="."]
+collision_mask = 5
+script = ExtResource("1_xr46d")
+use_navigation = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Orc"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc"]
+position = Vector2(542, 328)
+shape = SubResource("CapsuleShape2D_xr46d")
+debug_color = Color(0.9582035, 1.92523e-07, 0.5310589, 0.41960785)
+
+[node name="DetectionArea" type="Area2D" parent="Orc"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc/DetectionArea"]
+position = Vector2(542, 328)
+shape = SubResource("CircleShape2D_bpg1s")
+
+[node name="Hitbox" type="Area2D" parent="Orc"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc/Hitbox"]
+position = Vector2(554, 349)
+shape = SubResource("RectangleShape2D_xr46d")
