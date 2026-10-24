@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byp8ejaoujl6g"]
 
-[ext_resource type="Script" uid="uid://sfyt7m7vi40g" path="res://assets/ui/main_menu.gd" id="1_mkuvw"]
-[ext_resource type="Texture2D" uid="uid://bglq23xluu8yq" path="res://assets/ui/working_man_title_bg_1280x720.png" id="2_hskgt"]
+[ext_resource type="Script" uid="uid://sfyt7m7vi40g" path="res://scripts/main_menu.gd" id="1_mkuvw"]
+[ext_resource type="Texture2D" uid="uid://bc00qrgg6jm6w" path="res://assets/ui/working_man_title_bg_1280x720.png" id="2_hskgt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gyqk"]
 texture = ExtResource("2_hskgt")
@@ -41,6 +41,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3gyqk")
