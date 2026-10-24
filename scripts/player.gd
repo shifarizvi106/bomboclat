@@ -1,24 +1,37 @@
 extends CharacterBody2D
 
 @export var speed: float = 150.0
-@export var max_health: int = 5
+@export var max_health: int = 3
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var last_direction: String = "down"
-var health: int
+var health: int = 3
+var is_dead: bool = false
+var damage_flash_active: bool = false
 
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	add_to_group("player")
+
 	health = max_health
+	update_hud_health()
 
 
 func _physics_process(_delta: float) -> void:
-	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if is_dead:
+		velocity = Vector2.ZERO
+		return
 
-	# No diagonal movement; horizontal has priority.
+	var direction := Input.get_vector(
+		"ui_left",
+		"ui_right",
+		"ui_up",
+		"ui_down"
+	)
+
+	# Prevent diagonal movement; horizontal input takes priority.
 	if direction.x != 0:
 		direction.y = 0
 	elif direction.y != 0:
@@ -27,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * speed
 	move_and_slide()
 
+	# Keep the last facing direction when standing still.
 	if direction == Vector2.ZERO:
 		return
 
@@ -51,14 +65,44 @@ func _physics_process(_delta: float) -> void:
 
 
 func take_damage(amount: int) -> void:
-	health -= amount
+	if is_dead or amount <= 0:
+		return
+
+	health = maxi(health - amount, 0)
+
 	print("Alex took ", amount, " damage! Health: ", health)
 
-	# Quick red flash
-	animated_sprite.modulate = Color.RED
-	await get_tree().create_timer(0.15).timeout
-	animated_sprite.modulate = Color.WHITE
+	update_hud_health()
+
+	# Flash Alex red briefly after taking damage.
+	if not damage_flash_active:
+		damage_flash_active = true
+		animated_sprite.modulate = Color.RED
+
+		await get_tree().create_timer(0.15).timeout
+
+		if is_instance_valid(animated_sprite):
+			animated_sprite.modulate = Color.WHITE
+
+		damage_flash_active = false
 
 	if health <= 0:
-		print("Alex died!")
-		# get_tree().reload_current_scene()
+		die()
+
+
+func update_hud_health() -> void:
+	var hud := get_tree().get_first_node_in_group("game_hud")
+
+	if hud != null and hud.has_method("set_health"):
+		hud.set_health(health)
+
+
+func die() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+	velocity = Vector2.ZERO
+
+	print("Alex died! Game Over.")
+	# We'll connect the Game Over screen later.

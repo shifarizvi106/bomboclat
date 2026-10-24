@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://d0km7aj815tj4" path="res://assets/Characters/walk_right.png" id="7_opw0y"]
 [ext_resource type="Texture2D" uid="uid://c2ruvya66rvd3" path="res://assets/Characters/walk_up.png" id="8_g7sqe"]
 [ext_resource type="Script" uid="uid://b13bt0i5sc35o" path="res://orc.gd" id="9_thei6"]
+[ext_resource type="Script" uid="uid://jaooehluagq1" path="res://scripts/hud.gd" id="10_opw0y"]
+[ext_resource type="FontFile" uid="uid://ci2heqfwpnli6" path="res://assets/fonts/PressStart2P-Regular.ttf" id="11_g7sqe"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_turoa"]
 load_path = "res://.godot/imported/Alex_idle_16x16.png-6d06c158a9e3c323c71cc407087019f2.ctex"
@@ -249,3 +251,41 @@ shape = SubResource("CircleShape2D_opw0y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Orc2/Hitbox" unique_id=911738529]
 position = Vector2(208, 227)
 shape = SubResource("RectangleShape2D_g7sqe")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1243095644]
+
+[node name="Control" type="Control" parent="HUD" unique_id=688344333]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_opw0y")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=366820091]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 648.0
+offset_bottom = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer" unique_id=1288314567]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="HeartsLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer" unique_id=216996693]
+texture_filter = 1
+layout_mode = 2
+text = "❤️❤️❤️"
+
+[node name="ScoreLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer" unique_id=1828579201]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_g7sqe")
+theme_override_font_sizes/font_size = 12
+text = "SCORE: 000000"

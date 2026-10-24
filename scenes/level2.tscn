@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://dy2nlbjrkhims"]
+
+[ext_resource type="Texture2D" uid="uid://dcoqbl855rbos" path="res://assets/TrainExample/backgrounds/train_station.png" id="1_cuuuj"]
+[ext_resource type="PackedScene" uid="uid://cclak0x13uoqr" path="res://Orc.tscn" id="2_eywua"]
+[ext_resource type="Script" uid="uid://c7dret4qbv10m" path="res://scripts/player.gd" id="3_6ep0u"]
+[ext_resource type="Texture2D" uid="uid://dfbcobhc86vyv" path="res://assets/Characters/idle_down.png" id="4_hrcei"]
+[ext_resource type="Texture2D" uid="uid://cfdm0ebedbcwg" path="res://assets/Characters/walk_left.png" id="5_xa7n4"]
+[ext_resource type="Texture2D" uid="uid://d0km7aj815tj4" path="res://assets/Characters/walk_right.png" id="6_bo4dx"]
+[ext_resource type="Texture2D" uid="uid://c2ruvya66rvd3" path="res://assets/Characters/walk_up.png" id="7_76toy"]
+[ext_resource type="Script" uid="uid://jaooehluagq1" path="res://scripts/hud.gd" id="8_xa7n4"]
+[ext_resource type="FontFile" uid="uid://ci2heqfwpnli6" path="res://assets/fonts/PressStart2P-Regular.ttf" id="9_bo4dx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eywua"]
+size = Vector2(35.04165, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuuuj"]
+size = Vector2(6.5764112, 70.75)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8g4ke"]
+load_path = "res://.godot/imported/Alex_idle_16x16.png-6d06c158a9e3c323c71cc407087019f2.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56gwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hrcei")
+}],
+"loop": 1,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_xa7n4")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bo4dx")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_76toy")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve5ok"]
+size = Vector2(12, 16)
+
+[node name="TrainStation" type="Sprite2D" unique_id=706730143]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(4.469, 4)
+texture = ExtResource("1_cuuuj")
+
+[node name="Node2D" parent="." unique_id=1307259419 instance=ExtResource("2_eywua")]
+position = Vector2(-96.46527, -4.725007)
+
+[node name="Barricade" type="StaticBody2D" parent="." unique_id=1537667409]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barricade" unique_id=1016492543]
+position = Vector2(-99.28469, 20.47499)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_eywua")
+
+[node name="Bar-2" type="StaticBody2D" parent="." unique_id=2119940648]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bar-2" unique_id=1703528992]
+position = Vector2(-113.51733, -25.825008)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_cuuuj")
+one_way_collision_margin = 0.0
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=143437114]
+position = Vector2(-416.2005, 445.25)
+script = ExtResource("3_6ep0u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1744165671]
+visible = false
+texture_filter = 1
+position = Vector2(726, -70)
+scale = Vector2(3, 3)
+texture = SubResource("CompressedTexture2D_8g4ke")
+hframes = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1618535585]
+position = Vector2(323.33856, -403.25)
+scale = Vector2(1.1066251, 1.0234376)
+sprite_frames = SubResource("SpriteFrames_56gwk")
+animation = &"walk_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=156611609]
+position = Vector2(324.4574, -402.5)
+shape = SubResource("RectangleShape2D_ve5ok")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=461337235]
+
+[node name="Control" type="Control" parent="HUD" unique_id=1849890293]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_xa7n4")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=2028818787]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 698.0
+offset_bottom = -473.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer" unique_id=1840878618]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="HeartsLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer" unique_id=947412414]
+texture_filter = 1
+layout_mode = 2
+text = "❤️❤️❤️"
+
+[node name="ScoreLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer" unique_id=839262672]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_bo4dx")
+theme_override_font_sizes/font_size = 12
+text = "SCORE: 000000"

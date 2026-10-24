@@ -1,3 +1,4 @@
+
 extends Node2D
 
 var glitch_mode: bool = false
@@ -39,6 +40,7 @@ func _ready() -> void:
 
 func create_glitch_overlay() -> void:
 	var canvas := CanvasLayer.new()
+	canvas.name = "GlitchEffects"
 	canvas.layer = 100
 	add_child(canvas)
 
@@ -49,11 +51,27 @@ func create_glitch_overlay() -> void:
 	)
 	glitch_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	glitch_overlay.color = Color(0, 0, 0, 0)
+
 	canvas.add_child(glitch_overlay)
 
 
 func _process(_delta: float) -> void:
 	if transitioning:
+		return
+
+	# Transition from Level 1 to Level 2 at either exit.
+	var at_exit_1: bool = (
+		abs(player.global_position.x - (-558.896)) <= 12.0
+		and abs(player.global_position.y - 279.88) <= 12.0
+	)
+
+	var at_exit_2: bool = (
+		abs(player.global_position.x - 254.076) <= 12.0
+		and abs(player.global_position.y - 285.076) <= 12.0
+	)
+
+	if at_exit_1 or at_exit_2:
+		await transition_to_level_2()
 		return
 
 	# Coach 1 -> Coach 2.
@@ -95,6 +113,26 @@ func _process(_delta: float) -> void:
 		play_rgb_split()
 
 
+func transition_to_level_2() -> void:
+	if transitioning:
+		return
+
+	transitioning = true
+
+	var fade_out := create_tween()
+	fade_out.tween_property(
+		glitch_overlay,
+		"color",
+		Color.BLACK,
+		0.35
+	)
+	await fade_out.finished
+
+	get_tree().change_scene_to_file(
+		"res://scenes/level2.tscn"
+	)
+
+
 func transition_to_coach2() -> void:
 	if transitioning:
 		return
@@ -112,6 +150,7 @@ func transition_to_coach2() -> void:
 
 	coach1.visible = false
 	coach1_glitch.visible = false
+
 	coach1_seat_barrier.visible = false
 	set_coach1_collisions_disabled(true)
 
@@ -160,6 +199,7 @@ func transition_to_coach1() -> void:
 
 	background.visible = false
 	glitch_background.visible = false
+
 	seat_barrier.visible = false
 	set_seat_collisions_disabled(true)
 

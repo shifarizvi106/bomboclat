@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://d0km7aj815tj4" path="res://assets/Characters/walk_right.png" id="9_go7sj"]
 [ext_resource type="Texture2D" uid="uid://c2ruvya66rvd3" path="res://assets/Characters/walk_up.png" id="10_7gny6"]
 [ext_resource type="Texture2D" uid="uid://ctmukmwaopj2l" path="res://assets/tutorialtext/press_space_text_only.png" id="11_2os1m"]
+[ext_resource type="Script" uid="uid://jaooehluagq1" path="res://scripts/hud.gd" id="12_go7sj"]
+[ext_resource type="FontFile" uid="uid://ci2heqfwpnli6" path="res://assets/fonts/PressStart2P-Regular.ttf" id="13_7gny6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2aecg"]
 load_path = "res://.godot/imported/Alex_idle_16x16.png-6d06c158a9e3c323c71cc407087019f2.ctex"
@@ -218,3 +220,41 @@ offset_bottom = 607.0
 texture = ExtResource("11_2os1m")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1209096772]
+
+[node name="Control" type="Control" parent="HUD" unique_id=27395652]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_go7sj")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=1364585790]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 748.0
+offset_bottom = -388.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer" unique_id=1890782647]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="HeartsLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer" unique_id=1297340705]
+texture_filter = 1
+layout_mode = 2
+text = "❤️❤️❤️"
+
+[node name="ScoreLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer" unique_id=612670677]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_7gny6")
+theme_override_font_sizes/font_size = 12
+text = "SCORE: 000000"
