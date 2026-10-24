@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b2cjdlovdnui8"]
+[gd_scene load_steps=27 format=3 uid="uid://b2cjdlovdnui8"]
 
 [ext_resource type="Texture2D" uid="uid://cund2bhtcegpc" path="res://assets/TrainAssets/station_concourse.png" id="1_m3x5m"]
 [ext_resource type="Script" uid="uid://bff086yjpelyo" path="res://scripts/level_3.gd" id="1_uocrp"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cfdm0ebedbcwg" path="res://assets/Characters/walk_left.png" id="6_iw2mh"]
 [ext_resource type="Texture2D" uid="uid://d0km7aj815tj4" path="res://assets/Characters/walk_right.png" id="7_opw0y"]
 [ext_resource type="Texture2D" uid="uid://c2ruvya66rvd3" path="res://assets/Characters/walk_up.png" id="8_g7sqe"]
-[ext_resource type="Script" uid="uid://b13bt0i5sc35o" path="res://orc.gd" id="9_thei6"]
+[ext_resource type="Script" uid="uid://bhk4oirmv2v8r" path="res://scenes/orc_lv3.gd" id="9_g7sqe"]
 [ext_resource type="Script" uid="uid://jaooehluagq1" path="res://scripts/hud.gd" id="10_opw0y"]
 [ext_resource type="FontFile" uid="uid://ci2heqfwpnli6" path="res://assets/fonts/PressStart2P-Regular.ttf" id="11_g7sqe"]
 
@@ -21,7 +21,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_thei6")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle_down",
 "speed": 5.0
 }, {
@@ -29,7 +29,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_iw2mh")
 }],
-"loop": 1,
+"loop": true,
 "name": &"walk_left",
 "speed": 5.0
 }, {
@@ -37,7 +37,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_opw0y")
 }],
-"loop": 1,
+"loop": true,
 "name": &"walk_right",
 "speed": 5.0
 }, {
@@ -45,7 +45,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_g7sqe")
 }],
-"loop": 1,
+"loop": true,
 "name": &"walk_up",
 "speed": 5.0
 }]
@@ -90,27 +90,27 @@ radius = 129.13947
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7sqe"]
 size = Vector2(41.554688, 33.19629)
 
-[node name="Level3" type="Node2D" unique_id=1528718088]
+[node name="Level3" type="Node2D"]
 script = ExtResource("1_uocrp")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1489002227]
+[node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(576, 324)
 scale = Vector2(4, 4)
 texture = ExtResource("1_m3x5m")
 
-[node name="GlitchBackground" type="Sprite2D" parent="." unique_id=605371292]
+[node name="GlitchBackground" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1
 position = Vector2(578.25, 323.4375)
 scale = Vector2(0.5818694, 0.57662106)
 texture = ExtResource("2_xsxxn")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1655306479 groups=["player"]]
-position = Vector2(300, 400)
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(1100, 250)
 script = ExtResource("4_kpqvn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=514689462]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 visible = false
 texture_filter = 1
 position = Vector2(726, -70)
@@ -118,152 +118,158 @@ scale = Vector2(3, 3)
 texture = SubResource("CompressedTexture2D_turoa")
 hframes = 4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=445811548]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-119, 63)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1fmh2")
 animation = &"walk_left"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1557558250]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-118, 65)
 shape = SubResource("RectangleShape2D_t3dp5")
 
-[node name="TopShopsBarrier" type="StaticBody2D" parent="." unique_id=209109556]
+[node name="TopShopsBarrier" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=1762373133]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(341, 109)
 shape = SubResource("RectangleShape2D_hkftf")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=975890242]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(177, 96.625)
 shape = SubResource("RectangleShape2D_turoa")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=1049494238]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(973, 98)
 shape = SubResource("RectangleShape2D_turoa")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=1092655419]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(973, 98)
 shape = SubResource("RectangleShape2D_turoa")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=1600723108]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(271.5, 452.6875)
 shape = SubResource("RectangleShape2D_1fmh2")
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=423380879]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(446, 450)
 shape = SubResource("RectangleShape2D_kid5y")
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=1004678411]
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(542, 449)
 shape = SubResource("RectangleShape2D_kid5y")
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=309982173]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(362, 452)
 shape = SubResource("RectangleShape2D_qtcjj")
 
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=765376520]
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(712, 448)
 shape = SubResource("RectangleShape2D_qtcjj")
 
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=1632676976]
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(803, 448)
 shape = SubResource("RectangleShape2D_qtcjj")
 
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=548089603]
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(885, 448)
 shape = SubResource("RectangleShape2D_qtcjj")
 
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=1301645000]
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(991.125, 444.34375)
 shape = SubResource("RectangleShape2D_rljsv")
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=203370777]
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(625, 447)
 shape = SubResource("RectangleShape2D_qtcjj")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=1601999571]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(585, 521.875)
 shape = SubResource("RectangleShape2D_opw0y")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=42926591]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(560, 112)
 shape = SubResource("RectangleShape2D_hkftf")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=2104153827]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(825.5, 108)
 shape = SubResource("RectangleShape2D_thei6")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=327753353]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(1026, 327)
 shape = SubResource("RectangleShape2D_iw2mh")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="TopShopsBarrier" unique_id=275516210]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="TopShopsBarrier"]
 position = Vector2(126, 328)
 shape = SubResource("RectangleShape2D_iw2mh")
 
-[node name="Orc" type="CharacterBody2D" parent="." unique_id=1947268441]
+[node name="Orc1" type="CharacterBody2D" parent="."]
 collision_mask = 5
-script = ExtResource("9_thei6")
+script = ExtResource("9_g7sqe")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Orc" unique_id=787928216]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Orc1"]
 position = Vector2(576, 324)
 scale = Vector2(3, 3)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc" unique_id=1509355201]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc1"]
 position = Vector2(542, 328)
 shape = SubResource("CapsuleShape2D_iw2mh")
 debug_color = Color(0.9582035, 1.92523e-07, 0.5310589, 0.41960785)
 
-[node name="DetectionArea" type="Area2D" parent="Orc" unique_id=424248911]
+[node name="DetectionArea" type="Area2D" parent="Orc1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc/DetectionArea" unique_id=1625002979]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc1/DetectionArea"]
 position = Vector2(542, 328)
 shape = SubResource("CircleShape2D_opw0y")
 
-[node name="Hitbox" type="Area2D" parent="Orc" unique_id=1749764575]
+[node name="Hitbox" type="Area2D" parent="Orc1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc/Hitbox" unique_id=1710852782]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc1/Hitbox"]
 position = Vector2(543, 329)
 shape = SubResource("RectangleShape2D_g7sqe")
 
-[node name="Orc2" type="CharacterBody2D" parent="." unique_id=2119030100]
-collision_mask = 5
-script = ExtResource("9_thei6")
+[node name="NavigationLink2D" type="NavigationLink2D" parent="Orc1"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Orc2" unique_id=1943039198]
+[node name="Orc2" type="CharacterBody2D" parent="."]
+collision_mask = 5
+script = ExtResource("9_g7sqe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Orc2"]
 position = Vector2(208, 228)
 scale = Vector2(3, 3)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc2" unique_id=603424245]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc2"]
 position = Vector2(208, 225)
 shape = SubResource("CapsuleShape2D_iw2mh")
 debug_color = Color(0.9582035, 1.92523e-07, 0.5310589, 0.41960785)
 
-[node name="DetectionArea" type="Area2D" parent="Orc2" unique_id=1656341301]
+[node name="DetectionArea" type="Area2D" parent="Orc2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc2/DetectionArea" unique_id=657620228]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc2/DetectionArea"]
 position = Vector2(208, 227)
 shape = SubResource("CircleShape2D_opw0y")
 
-[node name="Hitbox" type="Area2D" parent="Orc2" unique_id=1014997816]
+[node name="Hitbox" type="Area2D" parent="Orc2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc2/Hitbox" unique_id=911738529]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Orc2/Hitbox"]
 position = Vector2(208, 227)
 shape = SubResource("RectangleShape2D_g7sqe")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1243095644]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="HUD" unique_id=688344333]
+[node name="Control" type="Control" parent="HUD"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -3.0
+offset_right = 26.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_opw0y")
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=366820091]
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -272,18 +278,18 @@ offset_bottom = -498.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer" unique_id=1288314567]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_constants/separation = 11
 alignment = 1
 
-[node name="HeartsLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer" unique_id=216996693]
+[node name="HeartsLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 text = "❤️❤️❤️"
 
-[node name="ScoreLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer" unique_id=1828579201]
+[node name="ScoreLabel" type="Label" parent="HUD/MarginContainer/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_g7sqe")

@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://1dghsxflxm31"]
+
+[ext_resource type="Script" uid="uid://5xcpwgee2qau" path="res://scenes/bullets.gd" id="1_pl5fx"]
+[ext_resource type="Texture2D" uid="uid://dfbcobhc86vyv" path="res://assets/Characters/idle_down.png" id="2_nahw1"]
+[ext_resource type="Texture2D" uid="uid://cfdm0ebedbcwg" path="res://assets/Characters/walk_left.png" id="3_dcste"]
+[ext_resource type="Texture2D" uid="uid://d0km7aj815tj4" path="res://assets/Characters/walk_right.png" id="4_6ua4g"]
+[ext_resource type="Texture2D" uid="uid://c2ruvya66rvd3" path="res://assets/Characters/walk_up.png" id="5_ahvlf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jrj0x"]
+load_path = "res://.godot/imported/Alex_idle_16x16.png-6d06c158a9e3c323c71cc407087019f2.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akcpd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nahw1")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dcste")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6ua4g")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ahvlf")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_728jf"]
+size = Vector2(12, 16)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(1100, 250)
+script = ExtResource("1_pl5fx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+visible = false
+texture_filter = 1
+position = Vector2(726, -70)
+scale = Vector2(3, 3)
+texture = SubResource("CompressedTexture2D_jrj0x")
+hframes = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(-354, 6)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_akcpd")
+animation = &"walk_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-352, 15)
+shape = SubResource("RectangleShape2D_728jf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Player"]

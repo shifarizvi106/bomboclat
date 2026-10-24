@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://byp8ejaoujl6g"]
+[gd_scene load_steps=0 format=3 uid="uid://byp8ejaoujl6g"]
 
 [ext_resource type="Script" uid="uid://sfyt7m7vi40g" path="res://scripts/main_menu.gd" id="1_mkuvw"]
 [ext_resource type="Texture2D" uid="uid://bc00qrgg6jm6w" path="res://assets/ui/working_man_title_bg_1280x720.png" id="2_hskgt"]
