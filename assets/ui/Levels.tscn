@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://274tg0vyvk3i"]
+[gd_scene format=3 uid="uid://274tg0vyvk3i"]
 
 [ext_resource type="Script" uid="uid://c7pa1tum11q0b" path="res://assets/ui/levels.gd" id="1_vx2d3"]
 [ext_resource type="Texture2D" uid="uid://bglq23xluu8yq" path="res://assets/ui/working_man_title_bg_1280x720.png" id="2_n42ai"]
@@ -60,14 +60,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -98.125
-offset_top = -78.0
+offset_top = 129.0
 offset_right = 98.125
-offset_bottom = 105.0
+offset_bottom = 312.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1801999838]
+modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
@@ -83,6 +84,7 @@ text = "Level 1
 "
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=1752903287]
+modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
@@ -97,6 +99,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_n42ai")
 text = "Level 2"
 
 [node name="Button3" type="Button" parent="VBoxContainer" unique_id=1838163264]
+modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
@@ -111,6 +114,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_n42ai")
 text = "Level 3"
 
 [node name="Button4" type="Button" parent="VBoxContainer" unique_id=1920221468]
+modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 6
@@ -133,4 +137,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_jh0cg")
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_level1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_level2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_level_3_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_back_levels_pressed"]
